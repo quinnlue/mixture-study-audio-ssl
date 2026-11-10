@@ -4,8 +4,6 @@
 Department of Computer Science, Montana State University, Bozeman, MT, USA
 luequinn@gmail.com
 
-**Repository contents:** [`writeup.pdf`](writeup.pdf) (paper), [`plots/`](plots/) (figures used below), and [`data/`](data/) ([`readouts.csv`](data/readouts.csv), every LoRA and probe readout; columns in [`data/README.md`](data/README.md)).
-
 ## Abstract
 
 Data mixture optimization is an important step for training robust foundation models. RegMix has shown that the data mixture quality surface can be well approximated by a swarm of small proxy models. While RegMix style applications are well studied in LLM pretraining, there is very little research showing their viability in audio foundation model pretraining. In this paper, we pretrain with utterance-frame objective, masked autoencoder, and supervised objectives across different scales (1M to 85M parameters) and budgets (10k to 40k optimizer steps). We optimize data mixture on 20 k-means generated AudioSet-2m clusters. On these 20 clusters, we sample 64 data mixtures and pretrain a model with each objective and scale on every mixture and evaluate with AS-20k and FSD-50k tagging. We find a strong negative result: small self-supervised models prefer genuinely different data mixtures from large ones. While supervised models rank mixtures much more consistently across all axes, we find that we can approximate supervised rankings with cheap heuristics — ranking mixtures by their KL divergence to the evaluation set's cluster distribution correlates with SUP-85M rankings at $\rho=0.86$.
